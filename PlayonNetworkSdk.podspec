@@ -10,7 +10,8 @@ Pod::Spec.new do |s|
   s.source_files     = 'Classes/**/*'
   s.platform         = :ios, '12.0'
 
-  s.weak_frameworks  = 'Flutter', 'FlutterPluginRegistrant'
+  s.dependency 'Flutter'
+  s.dependency 'FlutterPluginRegistrant'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
