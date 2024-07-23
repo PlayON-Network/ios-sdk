@@ -12,7 +12,7 @@ public class PlayonNetworkEngine {
 
   private var _authToken: String;
   private var _onAuthTokenError: OnAuthTokenErrorListener?;
-  private var _onAddFunds: OnRequestAddFundsListener?;
+  private var _onRequestAddFunds: OnRequestAddFundsListener?;
   private var _flutterEngine: FlutterEngine;
 
   init(
