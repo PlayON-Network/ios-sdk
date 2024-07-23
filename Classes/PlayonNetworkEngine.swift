@@ -1,7 +1,7 @@
 import Flutter
 import FlutterPluginRegistrant
 
-public typealias AddFundsResult = (bool?) -> ();
+public typealias AddFundsResult = (Bool?) -> ();
 public typealias OnRequestAddFundsListener = (Int, @escaping AddFundsResult) -> ();
 
 public typealias AuthTokenResult = (String?) -> ();
