@@ -7,9 +7,17 @@ public class PlayonNetwork {
     return self._engine;
   }
 
-  public static func initializeEngine(authToken: String, onAuthTokenError: @escaping OnAuthTokenErrorListener) -> PlayonNetworkEngine {
+  public static func initializeEngine(
+    authToken: String,
+    onAuthTokenError: @escaping OnAuthTokenErrorListener,
+    onRequestAddFunds: @escaping OnRequestAddFundsListener
+  ) -> PlayonNetworkEngine {
     if (self._engine == nil) {
-      self._engine = PlayonNetworkEngine(authToken: authToken, onAuthTokenError: onAuthTokenError);
+      self._engine = PlayonNetworkEngine(
+        authToken: authToken,
+        onAuthTokenError: onAuthTokenError,
+        onRequestAddFunds: onRequestAddFunds
+      );
     }
 
     return self._engine!;
