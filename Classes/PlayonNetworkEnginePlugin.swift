@@ -18,8 +18,8 @@ public class PlayonNetworkEnginePlugin: NSObject, FlutterPlugin {
         });
 
       case "requestAddFunds":
-        requestAddFunds(amount: call.arguments as! Int, onCompletion: { (amount: Int?) in
-          result(amount);
+        requestAddFunds(amount: call.arguments as! Int, onCompletion: { (funded: Bool?) in
+          result(funded);
         });
 
       default:
