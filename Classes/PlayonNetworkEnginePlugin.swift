@@ -17,6 +17,11 @@ public class PlayonNetworkEnginePlugin: NSObject, FlutterPlugin {
           result(token);
         });
 
+      case "requestAddFunds":
+        requestAddFunds(amount: call.arguments as! String, onCompletion: { (amount: Int?) in
+          result(amount);
+        });
+
       default:
         result(FlutterMethodNotImplemented)
     }
@@ -28,5 +33,9 @@ public class PlayonNetworkEnginePlugin: NSObject, FlutterPlugin {
 
   private func requestNewAuthToken(errorCode: String, onCompletion: @escaping AuthTokenResult) {
     PlayonNetwork.engine!.onAuthTokenError?(errorCode, onCompletion);
+  }
+
+  private func requestAddFunds(amount: Int, onCompletion: @escaping AddFundsResult) {
+    PlayonNetwork.engine!.onRequestAddFunds?(amount, onCompletion);
   }
 }
