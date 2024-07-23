@@ -18,7 +18,7 @@ public class PlayonNetworkEnginePlugin: NSObject, FlutterPlugin {
         });
 
       case "requestAddFunds":
-        requestAddFunds(amount: call.arguments as! String, onCompletion: { (amount: Int?) in
+        requestAddFunds(amount: call.arguments as! Int, onCompletion: { (amount: Int?) in
           result(amount);
         });
 
