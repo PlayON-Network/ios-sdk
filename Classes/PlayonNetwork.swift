@@ -2,9 +2,14 @@ import Flutter
 
 public class PlayonNetwork {
   private static var _engine: PlayonNetworkEngine?;
+  private static var _fantasyViewController: UIViewController?;
 
   public static var engine: PlayonNetworkEngine? {
     return self._engine;
+  }
+
+  public static var fantasyViewController: UIViewController? {
+    return self._fantasyViewController;
   }
 
   public static func initializeEngine(
@@ -24,15 +29,17 @@ public class PlayonNetwork {
   }
 
   public static func createFantasyViewController() -> UIViewController {
-    let viewController = FlutterViewController(
-      engine: self._engine!.flutterEngine,
-      nibName: nil,
-      bundle: nil
-    );
+    if (self._fantasyViewController == nil) {
+      self._fantasyViewController = FlutterViewController(
+        engine: self._engine!.flutterEngine,
+        nibName: nil,
+        bundle: nil
+      );
 
-    viewController.modalPresentationStyle = .overCurrentContext;
-    viewController.isViewOpaque = false;
+      self._fantasyViewController.modalPresentationStyle = .overCurrentContext;
+      self._fantasyViewController.isViewOpaque = false;
+    }
 
-    return viewController;
+    return self._fantasyViewController;
   }
 }
