@@ -36,10 +36,10 @@ public class PlayonNetwork {
         bundle: nil
       );
 
-      self._fantasyViewController.modalPresentationStyle = .overCurrentContext;
-      self._fantasyViewController.isViewOpaque = false;
+      self._fantasyViewController!.modalPresentationStyle = .overCurrentContext;
+      self._fantasyViewController!.isViewOpaque = false;
     }
 
-    return self._fantasyViewController;
+    return self._fantasyViewController!;
   }
 }
