@@ -30,14 +30,16 @@ public class PlayonNetwork {
 
   public static func createFantasyViewController() -> UIViewController {
     if (self._fantasyViewController == nil) {
-      self._fantasyViewController = FlutterViewController(
+      let viewController = FlutterViewController(
         engine: self._engine!.flutterEngine,
         nibName: nil,
         bundle: nil
       );
 
-      self._fantasyViewController!.modalPresentationStyle = .overCurrentContext;
-      self._fantasyViewController!.isViewOpaque = false;
+      viewController.modalPresentationStyle = .overCurrentContext;
+      viewController.isViewOpaque = false;
+
+      self._fantasyViewController = viewController;
     }
 
     return self._fantasyViewController!;
