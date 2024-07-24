@@ -1,6 +1,9 @@
 import Flutter
 import FlutterPluginRegistrant
 
+public typealias AddFundsResult = (Bool?) -> ();
+public typealias OnRequestAddFundsListener = (Int, @escaping AddFundsResult) -> ();
+
 public typealias AuthTokenResult = (String?) -> ();
 public typealias OnAuthTokenErrorListener = (String, @escaping AuthTokenResult) -> ();
 
@@ -9,11 +12,17 @@ public class PlayonNetworkEngine {
 
   private var _authToken: String;
   private var _onAuthTokenError: OnAuthTokenErrorListener?;
+  private var _onRequestAddFunds: OnRequestAddFundsListener?;
   private var _flutterEngine: FlutterEngine;
 
-  init(authToken: String, onAuthTokenError: @escaping OnAuthTokenErrorListener) {
+  init(
+    authToken: String,
+    onAuthTokenError: @escaping OnAuthTokenErrorListener,
+    onRequestAddFunds: @escaping OnRequestAddFundsListener
+  ) {
     self._authToken = authToken;
     self._onAuthTokenError = onAuthTokenError;
+    self._onRequestAddFunds = onRequestAddFunds;
     self._flutterEngine = FlutterEngine(name: PlayonNetworkEngine.kId);
     self._flutterEngine.run();
 
@@ -36,6 +45,16 @@ public class PlayonNetworkEngine {
 
     set {
       self._onAuthTokenError = newValue;
+    }
+  }
+
+  public var onRequestAddFunds: OnRequestAddFundsListener? {
+    get {
+      return self._onRequestAddFunds;
+    }
+
+    set {
+      self._onRequestAddFunds = newValue;
     }
   }
 }
